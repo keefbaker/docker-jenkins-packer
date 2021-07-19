@@ -7,6 +7,10 @@ source "docker" "packerimage" {
     image = "jenkins/inbound-agent:latest"
     commit = true
     exec_user = "root"
+    changes = [
+        "USER jenkins",
+        "ENTRYPOINT /usr/local/bin/jenkins-agent"
+    ]
 }
 build {
     sources = ["source.docker.packerimage"]
